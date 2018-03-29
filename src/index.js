@@ -1,3 +1,5 @@
+const request = require('request');
+
 /**
  * HTTP Cloud Function.
  *
@@ -5,5 +7,8 @@
  * @param {Object} res Cloud Function response context.
  */
 exports.trackGET = (req, res) => {
-    res.send('testing... testing...');
+    var r = null;
+    request('http://test-server:80/media/0', function (error, response, body) {
+        res.status(200).send(response);
+    });
 };

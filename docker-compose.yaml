@@ -5,6 +5,8 @@ services:
     build:
       dockerfile: GCFLocal.Dockerfile
       context: .
+    links:
+      - test-server
   smoke-tests:
     container_name: transcoder-smoketests
     build: 
@@ -12,3 +14,8 @@ services:
       context: .
     links:
       - gcf-local
+  test-server:
+    container_name: transcoder-testserver
+    build: 
+      dockerfile: TestServer.Dockerfile
+      context: .

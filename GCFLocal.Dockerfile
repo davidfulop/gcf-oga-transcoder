@@ -10,6 +10,8 @@ ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 RUN npm install -g @google-cloud/functions-emulator
 
 COPY src/index.js .
+COPY src/package.json .
 COPY src/start.sh .
+RUN npm install request
 
 ENTRYPOINT [ "bash", "start.sh" ]
