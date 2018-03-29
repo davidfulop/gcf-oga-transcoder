@@ -1,0 +1,14 @@
+version: '2'
+services:
+  gcf-local:
+    container_name: gcf-local
+    build:
+      dockerfile: GCFLocal.Dockerfile
+      context: .
+  smoke-tests:
+    container_name: transcoder-smoketests
+    build: 
+      dockerfile: SmokeTests.Dockerfile
+      context: .
+    links:
+      - gcf-local
