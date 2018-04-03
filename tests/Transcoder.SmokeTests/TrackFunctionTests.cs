@@ -15,7 +15,8 @@ namespace Transcoder.SmokeTests
             var request = WebRequest.Create(TRACK_FUNCTION_URL);
             var response = request.GetResponse() as HttpWebResponse;
             
-            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, $"Unexpected {response.StatusCode} status.");
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, 
+                $"Unexpected {response.StatusCode} status.");
 
         }
 
@@ -29,9 +30,18 @@ namespace Transcoder.SmokeTests
             using (var sr = new StreamReader(responseStream))
             {
                 stringResponse = sr.ReadToEnd();
-                Assert.IsTrue(stringResponse.Length > ONE_MEG, $"Response from backend: {stringResponse}");
-            }
-            
+                Assert.IsTrue(stringResponse.Length > ONE_MEG, 
+                    $"Response from backend: {stringResponse}");
+            }            
+        }
+
+        [Test]
+        public void Returns_audio_flac_as_content_type()
+        {
+            var request = WebRequest.Create(TRACK_FUNCTION_URL);
+            var response = request.GetResponse() as HttpWebResponse;
+            Assert.AreEqual("audio/flac", response.Headers["Content-Type"], 
+                $"Unexpected Content-Type header: {response.Headers["Content-Type"]}");
         }
     }
 }
