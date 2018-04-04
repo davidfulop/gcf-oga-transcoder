@@ -7,4 +7,4 @@ echo '--- Deploying trackGET ---'
 functions deploy trackGET --trigger-http
 echo '--- Deploy complete ---'
 
-sleep 15    # keep the container alive so tests can run
+sleep 19    # keep the container alive so tests can run
