@@ -2,6 +2,8 @@
   "name": "functionstest",
   "version": "0.0.1",
   "dependencies": {
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "ffmpeg-stream": "0.5.0",
+    "fs": "0.0.1-security"
   }
 }
