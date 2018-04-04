@@ -11,6 +11,4 @@ COPY ./tests/Transcoder.SmokeTests ./tests/Transcoder.SmokeTests
 
 RUN dotnet build tests/Transcoder.SmokeTests/Transcoder.SmokeTests.csproj
 
-RUN chmod +x tests/Transcoder.SmokeTests/wait-for-it.sh
-
 ENTRYPOINT [ "bash", "tests/Transcoder.SmokeTests/container-start.sh" ]
